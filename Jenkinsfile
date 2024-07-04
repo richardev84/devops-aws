@@ -12,24 +12,6 @@ pipeline {
                         sh 'mvn install'
                 }
         }
-
-        stage ('Compile'){
-                steps {
-                        sh 'mvn clean compile'
-                }
-        }
-
-        stage('Run Tests') {
-            steps {
-               sh 'mvn test'
-            }
-        }
-
-        stage('Package as WAR') {
-            steps {
-                sh 'mvn package'
-            }
-        }
         
     }
 }
