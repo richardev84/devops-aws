@@ -4,17 +4,18 @@
   become: yes
   become_method: sudo
   tasks:
+  
+    - name: Create a user 'johnd' with a home directory
+      ansible.builtin.user:
+      name: johnd
+      create_home: yes
+
     - name: Add the user 'johnd' with a specific uid and a primary group of 'admin'
       ansible.builtin.user:
       name: johnd
       comment: John Doe
       uid: 1040
       group: admin
-
-    - name: Create a user 'johnd' with a home directory
-      ansible.builtin.user:
-      name: johnd
-      create_home: yes
 
     - name: Ensure apache is at the latest version
       ansible.builtin.yum:
