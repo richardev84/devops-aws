@@ -15,7 +15,7 @@
         name: johnd
         comment: John Doe
         uid: 1040
-        group: admin
+        group: patch
 
     - name: Ensure apache is at the latest version
       ansible.builtin.yum:
