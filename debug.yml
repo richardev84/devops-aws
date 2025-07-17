@@ -1,0 +1,28 @@
+---
+- name: Manage servers in debug mode
+  hosts: all
+  become: yes
+  become_method: sudo
+
+  tasks:
+    - name: Ensure apache is at the latest version
+      ansible.builtin.yum:
+        name: httpd
+        state: latest
+      tags: http
+      register: command_output
+
+    - name: Shows the exit code
+      ansible.builtin.debug:
+        msg: "{{ command_output.rc }}"
+
+    - name: Install chrony
+      ansible.builtin.yum:
+        name: chrony
+        state: present
+
+    - name: Enable and start chronyd
+      ansible.builtin.service:
+        name: chronyd
+        enabled: true
+        state: started
